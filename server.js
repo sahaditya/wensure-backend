@@ -32,7 +32,6 @@ app.get("/", (req, res) => {
 
 app.use("/api", routes);
 
-console.log(CONSTANT.PORT_NO);
 app.listen(8081, () => {
-  console.log("Listening on port ");
+  console.log("Listening on port: 8081");
 });

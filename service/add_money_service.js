@@ -43,8 +43,8 @@ exports.add_money = async (req, res) => {
       });
     }
 
-    const saved = u_l.save();
-    res.json(saved);
+    // const saved = u_l.save();
+    res.json(user_policy_ledger);
     res.end();
     Logger.debug("Exited from add_money method");
   } catch (error) {

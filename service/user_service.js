@@ -9,7 +9,7 @@ exports.create_user = async (req, res) => {
     Logger.debug("Entered into create_user method");
     const existUser = await User.find({ uid: req.body.uid });
     Logger.debug(existUser);
-    if (existUser[0] && existUser[0].uid) {
+    if (existUser[0] && existUser[0].uid == req.body.uid) {
       res.json({
         status: 401,
         message: "User aready exist"
