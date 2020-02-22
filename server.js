@@ -1,9 +1,12 @@
 const express = require("express");
-const CONSTANT = require("./utils/constants");
-const bodyParser = require("body-parser");
 const app = express();
-const dbConfig = require("./config/db_config.js");
+
+const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+
+const dbConfig = require("./config/db_config.js");
+const CONSTANT = require("./utils/constants");
+const routes = require("./routes/api_router");
 
 mongoose.Promise = global.Promise;
 mongoose
@@ -20,13 +23,12 @@ mongoose
 
 app.use(bodyParser.urlencoded({ extende: true }));
 app.use(bodyParser.json());
-//app.use(express.json());
-// Connecting to the database
 
 app.get("/", (req, res) => {
-  res.json({ message: "Welcom to node server of blogging application" });
+  res.json({ message: "Welcom to devengers hacknight :)" });
 });
-app.use("/blog", user_post_route);
+
+app.use("/api", routes);
 
 console.log(CONSTANT.PORT_NO);
 app.listen(8081, () => {

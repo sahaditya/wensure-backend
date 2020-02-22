@@ -4,4 +4,7 @@ const CONSTANTS = {
     "mongodb+srv://sahadi:sahadi123456789@sah-db-free-pyrm7.mongodb.net/test?retryWrites=true&w=majority"
 };
 
-module.exports(CONSTANTS);
+STATUS = ["SUCCSEED", "PENDING", "FAILED"];
+TRANSACTION_TYPE = ["DEBIT", "CREDIT"];
+
+module.exports = { CONSTANTS, STATUS, TRANSACTION_TYPE };
