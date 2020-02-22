@@ -1,0 +1,19 @@
+{
+  "name": "wensure",
+  "version": "1.0.0",
+  "description": "saving assistant",
+  "main": "server.js\\",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sahaditya/wensure-backend.git"
+  },
+  "author": "code_blooded",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sahaditya/wensure-backend/issues"
+  },
+  "homepage": "https://github.com/sahaditya/wensure-backend#readme"
+}
