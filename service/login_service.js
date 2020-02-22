@@ -21,7 +21,7 @@ exports.login = async (req, res) => {
         status: false
       });
     }
-    Logger.debug("exited from login method");
+    Logger.debug("Exited from login method");
     res.end();
   } catch (error) {
     res.json({

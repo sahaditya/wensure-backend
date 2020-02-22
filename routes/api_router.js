@@ -10,6 +10,7 @@ router.get("/test", user_service.test);
 
 router.post("/user", user_service.create_user);
 router.post("/policy", policy_service.create_policy);
+router.get("/policy", policy_service.get_policy);
 
 router.post("/ledger/user", ledger.create_user_ledger);
 router.post("/ledger/admin", ledger.create_admin_ledger); //NOT REQUIRED
