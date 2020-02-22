@@ -1,7 +1,24 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const PolicyTransaction = require("./common");
+// const PolicyTransaction = require("./common");
+
+const constant = require("../../utils/constants");
+let Transaction = new Schema({
+  amount: { type: Number, require: true },
+  date: { type: Date, require: true },
+  status: { type: String, require: true, enum: constant.STATUS },
+  type: { type: String, require: true, enum: constant.TRANSACTION_TYPE },
+  cashback: { type: String }
+});
+
+let PolicyTransaction = new Schema({
+  policy_id: { type: String, require: true },
+  transactions: [Transaction],
+  total_deposited: { type: Number, require: true },
+  total_withdrawn: { type: Number, require: true },
+  total_cashback: { type: Number, require: true }
+});
 
 let UserLedgerSchema = new Schema({
   uid: {
@@ -12,29 +29,3 @@ let UserLedgerSchema = new Schema({
   transaction_history: [PolicyTransaction]
 });
 module.exports = mongoose.model("UserLedger", UserLedgerSchema);
-
-// //txn
-// {
-//     "id": "string",
-//     "amount": "number",
-//     "date": "strng",
-//     "status": "string",
-//     "type": "dr/cr",
-//     "cashback" : "is_cr ? number : nil"
-// }
-
-// // policy txn
-// {
-//     "policy_id": "string",
-//     "transactions": ["{txn1}", "{txn1}", "{txn1}", "{txn1}", "..."] ,
-//     "total_deposited": "number",
-//     "total_withdrawn": "number" ,
-//     "total_cashback": "number"
-// }
-
-// // user ledger
-// {
-//     "uid": "string",
-//     "txn_history": ["{policy_txn}", "{policy_txn}", "{policy_txn}", "..."],
-
-// }

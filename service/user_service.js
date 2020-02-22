@@ -34,7 +34,7 @@ exports.create_user = async (req, res) => {
       status: 500,
       message: error.message
     });
-    Logger.debug("Error happen in login method");
+    Logger.debug("Error happen in create_user method");
     Logger.debug(error);
     res.end();
   }

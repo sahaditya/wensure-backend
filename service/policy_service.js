@@ -21,12 +21,12 @@ exports.get_policy = async (req, res) => {
   try {
     Logger.debug("Entered into get_policy method");
     const uid = req.query && req.query.uid;
-    const premium_id = req.query && req.query.premium_id;
+    const policy_id = req.query && req.query.policy_id;
     let query = {};
     if (uid) {
       query.uid = uid;
     } else {
-      query.premium_id = premium_id;
+      query.policy_id = policy_id;
     }
     const policy_list = await Policy.find(query);
     res.json(policy_list);
@@ -36,7 +36,7 @@ exports.get_policy = async (req, res) => {
       error: true,
       message: error.message
     });
-    Logger.debug("Error happen in login method");
+    Logger.debug("Error happen in get_policy method");
     Logger.debug(error);
     res.end();
   }
