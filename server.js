@@ -3,6 +3,7 @@ const app = express();
 
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 const dbConfig = require("./config/db_config.js");
 const CONSTANT = require("./utils/constants");
@@ -23,6 +24,7 @@ mongoose
 
 app.use(bodyParser.urlencoded({ extende: true }));
 app.use(bodyParser.json());
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.json({ message: "Welcom to devengers hacknight :)" });

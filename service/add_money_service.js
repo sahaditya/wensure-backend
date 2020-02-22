@@ -28,9 +28,7 @@ exports.add_money = async (req, res) => {
     };
     Logger.debug(user_policy_ledger[0].transaction_history);
     if (user_policy_ledger[0].uid) {
-      for (let element in user_policy_ledger[0].transaction_history) {
-        // }
-        //   user_policy_ledger[0].transaction_history.forEach(element => {
+      user_policy_ledger[0].transaction_history.forEach(element => {
         if (element.policy_id === req.body.policy_id) {
           element.transactions.push(new_payment);
 
@@ -41,12 +39,12 @@ exports.add_money = async (req, res) => {
           element.total_cashback = element.transactions.reduce((acc, val) => {
             return acc + val.cashback;
           }, 0);
-          break;
         }
-      }
+      });
     }
 
-    res.json(user_policy_ledger);
+    const saved = u_l.save();
+    res.json(saved);
     res.end();
     Logger.debug("Exited from add_money method");
   } catch (error) {
