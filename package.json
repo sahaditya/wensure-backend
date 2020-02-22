@@ -19,6 +19,7 @@
   "homepage": "https://github.com/sahaditya/wensure-backend#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "log4js": "^6.1.2",
     "mongoose": "^5.9.2",
     "nodemon": "^2.0.2"
   }

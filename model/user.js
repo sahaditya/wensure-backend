@@ -17,12 +17,12 @@ let UserSchema = new Schema({
   }, //Need more thought
   contact: {
     phone_no: { type: Number, require: true },
-    address: { type: String, require: true },
-    email_id: { type: String, required: true }
+    address: { type: String, require: true }
   },
   insurance_reason: { type: String, require: true },
   death_wish: { type: String, require: true },
-  password: { type: String, require: true, maxlength: 8 }
+  password: { type: String, require: true, maxlength: 8 },
+  email_id: { type: String, required: true }
 });
 
 module.exports = mongoose.model("User", UserSchema);
