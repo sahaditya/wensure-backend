@@ -6,6 +6,7 @@ const policy_service = require("../service/policy_service");
 const ledger = require("../service/ledger_service");
 const login = require("../service/login_service");
 const money_service = require("../service/money_service");
+const motivation = require("../service/motivation_service");
 
 router.get("/test", user_service.test);
 
@@ -18,5 +19,7 @@ router.post("/ledger/admin", ledger.create_admin_ledger); //NOT REQUIRED
 router.post("/login", login.login);
 router.post("/addmoney", money_service.add_money);
 router.get("/balance", money_service.check_balance);
+
+router.get("/motivation", motivation.motivation_message);
 
 module.exports = router;
