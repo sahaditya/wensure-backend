@@ -65,17 +65,22 @@ exports.add_money = async (req, res) => {
   }
 };
 
-exports.check_balance = (req, res) => {
+exports.check_balance = async (req, res) => {
   try {
     const uid = req.query && req.query.uid;
-    const user_ledger = UserLedger.find({ uid: uid });
-    current_balance = user_ledger[0].transaction_history.reduce((acc, val) => {
-      return acc + val.amount;
-    }, 0);
-    res.json({
-      current_balance,
-      status: 400
+    const user_ledger = await UserLedger.find({ uid: uid });
+    let obj = {};
+    user_ledger[0].transaction_history.forEach(element => {
+      // ((acc, val) => {
+      //   Logger.log("val.amout", val.amout);
+      //   return acc + val.amout;
+      // }, 0)
+      obj[element.policy_id] = {
+        policy_id: element.policy_id,
+        balance: element.transactions.reduce((a, v) => a + v.amount, 0)
+      };
     });
+    res.json(obj);
   } catch (error) {
     res.json({
       error: true,
