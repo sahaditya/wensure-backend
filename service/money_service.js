@@ -30,7 +30,6 @@ exports.add_money = async (req, res) => {
     old_obj = JSON.parse(JSON.stringify(user_policy_ledger));
     delete old_obj.__v;
     for (let element in old_obj[0].transaction_history) {
-      // old_obj[0].transaction_history.forEach(element => {
       if (element.policy_id === req.body.policy_id) {
         const cb = element.total_cashback;
         new_obj = {
@@ -71,10 +70,6 @@ exports.check_balance = async (req, res) => {
     const user_ledger = await UserLedger.find({ uid: uid });
     let obj = {};
     user_ledger[0].transaction_history.forEach(element => {
-      // ((acc, val) => {
-      //   Logger.log("val.amout", val.amout);
-      //   return acc + val.amout;
-      // }, 0)
       obj[element.policy_id] = {
         policy_id: element.policy_id,
         balance: element.transactions.reduce((a, v) => a + v.amount, 0)
